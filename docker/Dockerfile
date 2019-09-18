@@ -1,14 +1,18 @@
-FROM servergurus/ubuntu-jdk8
-MAINTAINER Prasanjit Singh <nixgurus@gmail.com>
+
+FROM 10.128.0.6:8082/ubuntu:latest
+MAINTAINER Sarath Kunala
+
+#Setup Java
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
 
 # setup WildFly 
 COPY wildfly-8.2.0.Final /opt/wildfly
 
 # install example app on wildfy
-COPY wildfly-spring-boot-sample-1.0.0.war /opt/wildfly/standalone/deployments/
+COPY *.war /opt/wildfly/standalone/deployments/
 
 RUN java -version
-
 
 # Expose the ports we're interested in
 EXPOSE 8080 9990 9090
