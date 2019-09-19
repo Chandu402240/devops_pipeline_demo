@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: practice-proj1
+  labels:
+    service: practice-proj1
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: practice-proj1
