@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: practice-proj1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: practice-proj1
+        env: dev
+    spec:
+      containers:
+      - name: practice-proj1
+        image: 10.128.0.6:8082/practice_proj
+        imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regsecret
